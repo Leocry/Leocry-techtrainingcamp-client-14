@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
-import 'package:ui_clock_and_alarm/widgets/alarm_item.dart';
 import 'package:ui_clock_and_alarm/shapes_painter.dart';
 import 'package:ui_clock_and_alarm/add_stopwatch.dart';
 import 'package:ui_clock_and_alarm/add_timer.dart';
@@ -27,7 +26,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this, initialIndex: 0);
+    _tabController = TabController(length: 3, vsync: this, initialIndex: 0);
     _tabController.addListener(_handleTabIndex);
     _timeString = _formatDateTime(DateTime.now());
 
@@ -84,10 +83,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
               child: TabBar(
                 controller: _tabController,
                 indicatorColor: indiColor,
-                indicatorWeight: 4.0,
+                indicatorWeight: 3.0,
                 tabs: [
                   Tab(icon: Icon(Icons.access_time), text: 'Clock',),
-                  Tab(icon: Icon(Icons.alarm), text: 'Alarm'),
+                 // Tab(icon: Icon(Icons.alarm), text: 'Alarm'),
                   Tab(icon: Icon(Icons.hourglass_empty), text: 'Timer'),
                   Tab(icon: Icon(Icons.timer), text: 'Stopwatch'),
 //                  Tab(icon: Icon(Icons.language), text: 'World Clock'),
@@ -158,7 +157,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
                     ],
                   ),
                 ),
-                Container(
+               /* Container(
                   child: ListView(
                     children: <Widget>[
                       alarmItem(_timeString,true),
@@ -168,7 +167,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
                     ],
                   ),
                 ),
-                //Icon(Icons.hourglass_empty),
+                //Icon(Icons.hourglass_empty),*/
                 Container(
                     child: AddTimer(),
                     ),
@@ -179,13 +178,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
               ],
             ),
           ),
-          floatingActionButton: _bottomButtons(),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         ),
       );
   }
 
-  Widget _bottomButtons() {
+  /*Widget _bottomButtons() {
     return _tabController.index == 1
       ?FloatingActionButton(
         onPressed: () => Navigator.pushNamed(
@@ -199,5 +196,5 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
         ),
       )
       :null;
-  }
+  }*/
 }
